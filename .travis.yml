@@ -17,9 +17,9 @@ before_install:
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a DevHub
 script:
-- sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a scrachCItravis --wait 8
+- sfdx force:org:create -v DevHub -s -f config/project-scratch-def.json -a scrachCItravis --wait 8
 - sfdx force:org:display -u scrachCItravis
 - sfdx force:source:push -u scrachCItravis
 - sfdx force:apex:test:run -u scrachCItravis --wait 20
